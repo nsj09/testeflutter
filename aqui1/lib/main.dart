@@ -8,20 +8,19 @@ void main() => runApp(new MyApp());
       return new MaterialApp(
         title: 'login',
         home: new LoginPage(),
-        theme: new ThemeData(
-          primarySwatch: Colors.orange,
-        ),
       );
     }
   }
 
 
-    class LoginPage extends StatefulWidget{
+    class LoginPage extends StatelessWidget{
       @override
-      State createState() => new LoginPageState();
+      Widget build(BuildContext context) {
+        return new LoginPageState();
+      }
     }
 
-    class LoginPageState extends State<LoginPage>{
+    class LoginPageState extends StatelessWidget{
     @override
     Widget build(BuildContext context){
       return new Scaffold(
@@ -75,10 +74,18 @@ void main() => runApp(new MyApp());
                          color: Colors.teal,
                          textColor: Colors.white,
                          child: new Text("Login"),
-                         onPressed: () => {},
+                         onPressed: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (_) => new AlertDialog(
+                                      title: new Text("Atenção"),
+                                      content: new Text("Estamos desenvolvendo as telas deste aplicativo"),
+                                  )
+                              );
+                          }
                        ),
                     ],
-                ),
+                  ),
                  ),
               )
             )
